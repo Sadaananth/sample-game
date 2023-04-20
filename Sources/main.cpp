@@ -94,10 +94,16 @@ int main()
 
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+	Game game;
+	game.init();
+
 	while (!glfwWindowShouldClose(window)) {
+		glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
 		GLCall(glClear(GL_COLOR_BUFFER_BIT));
 
 		processInput(window);
+
+		game.update();
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
